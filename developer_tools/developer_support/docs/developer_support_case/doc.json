@@ -1,0 +1,27 @@
+{
+  "doc_key": "developer_support_case",
+  "doc_title": "Developer Support Case",
+  "doc_kind": "workflow_case",
+  "status": "draft",
+  "module_id": "developer_tools",
+  "submodule_id": "developer_support",
+  "app_id": "developer_ecosystem",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "workflow_case",
+  "classification": {
+    "archetype": "workflow_case",
+    "bundle": "ecosystem"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "ecosystem",
+    "app": "developer_ecosystem",
+    "module": "developer_tools",
+    "submodule": "developer_support",
+    "reference_doc_id": "developer_support_case",
+    "evidence_gaps": [
+      "SLA tiers",
+      "ticket/category taxonomy"
+    ]
+  }
+}

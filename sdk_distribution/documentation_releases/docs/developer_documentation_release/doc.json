@@ -1,0 +1,27 @@
+{
+  "doc_key": "developer_documentation_release",
+  "doc_title": "Developer Documentation Release",
+  "doc_kind": "transaction",
+  "status": "draft",
+  "module_id": "sdk_distribution",
+  "submodule_id": "documentation_releases",
+  "app_id": "developer_ecosystem",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "transaction",
+  "classification": {
+    "archetype": "transaction",
+    "bundle": "ecosystem"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "ecosystem",
+    "app": "developer_ecosystem",
+    "module": "sdk_distribution",
+    "submodule": "documentation_releases",
+    "reference_doc_id": "developer_documentation_release",
+    "evidence_gaps": [
+      "version-linking",
+      "multi-language packaging"
+    ]
+  }
+}

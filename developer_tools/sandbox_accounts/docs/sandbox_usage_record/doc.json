@@ -1,0 +1,27 @@
+{
+  "doc_key": "sandbox_usage_record",
+  "doc_title": "Sandbox Usage Record",
+  "doc_kind": "ledger",
+  "status": "draft",
+  "module_id": "developer_tools",
+  "submodule_id": "sandbox_accounts",
+  "app_id": "developer_ecosystem",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "ledger",
+  "classification": {
+    "archetype": "ledger",
+    "bundle": "ecosystem"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "ecosystem",
+    "app": "developer_ecosystem",
+    "module": "developer_tools",
+    "submodule": "sandbox_accounts",
+    "reference_doc_id": "sandbox_usage_record",
+    "evidence_gaps": [
+      "quota model",
+      "metering dimensions"
+    ]
+  }
+}

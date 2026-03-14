@@ -1,0 +1,8 @@
+{
+  "docs": [
+    "api_access_case",
+    "api_program_record",
+    "partner_api_key",
+    "webhook_subscription"
+  ]
+}

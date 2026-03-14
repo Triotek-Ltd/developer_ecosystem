@@ -1,0 +1,27 @@
+{
+  "doc_key": "api_access_case",
+  "doc_title": "Api Access Case",
+  "doc_kind": "workflow_case",
+  "status": "draft",
+  "module_id": "api_programs",
+  "submodule_id": "api_access",
+  "app_id": "developer_ecosystem",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "workflow_case",
+  "classification": {
+    "archetype": "workflow_case",
+    "bundle": "ecosystem"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "ecosystem",
+    "app": "developer_ecosystem",
+    "module": "api_programs",
+    "submodule": "api_access",
+    "reference_doc_id": "api_access_case",
+    "evidence_gaps": [
+      "access-review criteria",
+      "periodic revalidation model"
+    ]
+  }
+}

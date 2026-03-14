@@ -1,0 +1,8 @@
+{
+  "id": "release_registry",
+  "title": "Release Registry",
+  "app_id": "developer_ecosystem",
+  "module_id": "sdk_distribution",
+  "type": "submodule",
+  "status": "draft"
+}

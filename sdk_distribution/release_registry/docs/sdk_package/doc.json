@@ -1,0 +1,27 @@
+{
+  "doc_key": "sdk_package",
+  "doc_title": "Sdk Package",
+  "doc_kind": "master",
+  "status": "draft",
+  "module_id": "sdk_distribution",
+  "submodule_id": "release_registry",
+  "app_id": "developer_ecosystem",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "master",
+  "classification": {
+    "archetype": "master",
+    "bundle": "ecosystem"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "ecosystem",
+    "app": "developer_ecosystem",
+    "module": "sdk_distribution",
+    "submodule": "release_registry",
+    "reference_doc_id": "sdk_package",
+    "evidence_gaps": [
+      "package-family hierarchy",
+      "artifact storage policy"
+    ]
+  }
+}

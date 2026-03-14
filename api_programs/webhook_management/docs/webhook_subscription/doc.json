@@ -1,0 +1,27 @@
+{
+  "doc_key": "webhook_subscription",
+  "doc_title": "Webhook Subscription",
+  "doc_kind": "transaction",
+  "status": "draft",
+  "module_id": "api_programs",
+  "submodule_id": "webhook_management",
+  "app_id": "developer_ecosystem",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "transaction",
+  "classification": {
+    "archetype": "transaction",
+    "bundle": "ecosystem"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "ecosystem",
+    "app": "developer_ecosystem",
+    "module": "api_programs",
+    "submodule": "webhook_management",
+    "reference_doc_id": "webhook_subscription",
+    "evidence_gaps": [
+      "delivery-attempt tracking",
+      "signing/replay protection"
+    ]
+  }
+}

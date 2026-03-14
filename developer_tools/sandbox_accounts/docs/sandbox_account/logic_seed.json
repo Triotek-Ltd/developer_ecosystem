@@ -1,0 +1,111 @@
+{
+  "doc_id": "sandbox_account",
+  "doc_title": "Sandbox Account",
+  "archetype": "master",
+  "doc_kind": "master",
+  "actions": [
+    "create",
+    "provision",
+    "activate",
+    "suspend",
+    "expire",
+    "archive"
+  ],
+  "lifecycle": {
+    "initial_state": "requested",
+    "states": [
+      "requested",
+      "provisioned",
+      "active",
+      "suspended",
+      "expired",
+      "archived"
+    ],
+    "terminal_states": [
+      "archived"
+    ]
+  },
+  "related_doc_count": 4,
+  "fetch_rule_count": 0,
+  "action_handler_count": 6,
+  "archetype_profile": {
+    "workflow_profile": {
+      "mode": "entity_lifecycle",
+      "case_management": false
+    },
+    "reporting_profile": {
+      "supports_snapshots": false,
+      "supports_outputs": false
+    },
+    "integration_profile": {
+      "external_sync_enabled": false
+    },
+    "lifecycle_states": [
+      "requested",
+      "provisioned",
+      "active",
+      "suspended",
+      "expired",
+      "archived"
+    ],
+    "is_transactional": false
+  },
+  "contract_summary": {
+    "title_field": "title",
+    "status_field": "workflow_state",
+    "reference_field": "reference_no",
+    "required_fields": [
+      "title",
+      "workflow_state"
+    ],
+    "field_purposes": {
+      "workflow_state": "lifecycle_state",
+      "creation_date": "schedule_marker",
+      "account_status": "status_flag"
+    },
+    "search_fields": [
+      "title",
+      "reference_no",
+      "description",
+      "account_code",
+      "developer_identity",
+      "sandbox_tier"
+    ],
+    "list_columns": [
+      "title",
+      "reference_no",
+      "workflow_state",
+      "modified"
+    ],
+    "initial_state": "requested",
+    "lifecycle_states": [
+      "requested",
+      "provisioned",
+      "active",
+      "suspended",
+      "expired",
+      "archived"
+    ],
+    "terminal_states": [
+      "archived"
+    ],
+    "action_targets": {
+      "create": null,
+      "provision": null,
+      "activate": "active",
+      "suspend": null,
+      "expire": null,
+      "archive": "archived"
+    }
+  },
+  "workflow_hints": {},
+  "related_docs": [
+    "sandbox_usage_record",
+    "developer_test_run",
+    "developer_support_case",
+    "partner_api_key"
+  ],
+  "borrowed_fields": [
+    "developer/program access context from partner_api_key or developer account records"
+  ]
+}

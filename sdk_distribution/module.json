@@ -1,0 +1,8 @@
+{
+  "id": "sdk_distribution",
+  "title": "Sdk Distribution",
+  "app_id": "developer_ecosystem",
+  "type": "module",
+  "status": "draft",
+  "supports_submodules": true
+}

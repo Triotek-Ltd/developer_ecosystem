@@ -1,0 +1,27 @@
+{
+  "doc_key": "developer_test_run",
+  "doc_title": "Developer Test Run",
+  "doc_kind": "transaction",
+  "status": "draft",
+  "module_id": "developer_tools",
+  "submodule_id": "sandbox_accounts",
+  "app_id": "developer_ecosystem",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "transaction",
+  "classification": {
+    "archetype": "transaction",
+    "bundle": "ecosystem"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "ecosystem",
+    "app": "developer_ecosystem",
+    "module": "developer_tools",
+    "submodule": "sandbox_accounts",
+    "reference_doc_id": "developer_test_run",
+    "evidence_gaps": [
+      "test-suite model",
+      "artifact retention"
+    ]
+  }
+}

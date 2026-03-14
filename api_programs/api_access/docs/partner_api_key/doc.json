@@ -1,0 +1,27 @@
+{
+  "doc_key": "partner_api_key",
+  "doc_title": "Partner Api Key",
+  "doc_kind": "transaction",
+  "status": "draft",
+  "module_id": "api_programs",
+  "submodule_id": "api_access",
+  "app_id": "developer_ecosystem",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "transaction",
+  "classification": {
+    "archetype": "transaction",
+    "bundle": "ecosystem"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "ecosystem",
+    "app": "developer_ecosystem",
+    "module": "api_programs",
+    "submodule": "api_access",
+    "reference_doc_id": "partner_api_key",
+    "evidence_gaps": [
+      "secret-handling policy",
+      "last-used tracking"
+    ]
+  }
+}

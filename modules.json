@@ -1,0 +1,7 @@
+{
+  "modules": [
+    "api_programs",
+    "developer_tools",
+    "sdk_distribution"
+  ]
+}

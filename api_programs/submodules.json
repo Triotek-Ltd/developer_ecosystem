@@ -1,0 +1,6 @@
+{
+  "submodules": [
+    "api_access",
+    "webhook_management"
+  ]
+}

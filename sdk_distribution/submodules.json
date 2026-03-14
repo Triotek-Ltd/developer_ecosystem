@@ -1,0 +1,6 @@
+{
+  "submodules": [
+    "documentation_releases",
+    "release_registry"
+  ]
+}

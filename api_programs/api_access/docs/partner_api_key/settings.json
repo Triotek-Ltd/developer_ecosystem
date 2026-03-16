@@ -30,7 +30,26 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_api_program_record",
+      "doc_id": "api_program_record",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_api_access_case",
+      "doc_id": "api_access_case",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_sandbox_account",
+      "doc_id": "sandbox_account",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -38,7 +57,11 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "api_program_record",
+      "api_access_case",
+      "sandbox_account"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [
@@ -62,6 +85,42 @@
   "runtime_hints": {
     "doc_key": "partner_api_key",
     "supports_related_lookup": true,
-    "supports_fetch_rules": true
+    "supports_fetch_rules": true,
+    "workflow_hints": {
+      "relation_context": {
+        "related_docs": [
+          "api_program_record",
+          "api_access_case",
+          "sandbox_account"
+        ],
+        "borrowed_fields": [
+          "program scope",
+          "access policy from api_program_record"
+        ],
+        "inferred_roles": [
+          "compliance officer",
+          "case owner"
+        ]
+      },
+      "actors": [
+        "compliance officer",
+        "case owner"
+      ],
+      "action_actors": {
+        "create": [
+          "compliance officer"
+        ],
+        "issue": [
+          "case owner"
+        ],
+        "activate": [
+          "case owner"
+        ],
+        "archive": [
+          "case owner"
+        ]
+      }
+    },
+    "action_side_effects_file": "side_effects.json"
   }
 }

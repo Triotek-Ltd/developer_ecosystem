@@ -65,7 +65,9 @@
       "currency": "currency_code",
       "total_amount": "total_amount",
       "release_date": "schedule_marker",
-      "release_status": "status_flag"
+      "release_status": "status_flag",
+      "related_sdk_package": "relation_collection",
+      "related_developer_documentation_release": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -104,6 +106,8 @@
     }
   },
   "workflow_hints": {},
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "sdk_package",
     "developer_documentation_release"

@@ -60,7 +60,12 @@
         "sandbox_tier",
         "environment_scope"
       ],
-      "relations": [],
+      "relations": [
+        "related_sandbox_usage_record",
+        "related_developer_test_run",
+        "related_developer_support_case",
+        "related_partner_api_key"
+      ],
       "amounts": [],
       "dates": [
         "creation_date"
@@ -327,6 +332,102 @@
           "filterable": true,
           "sortable": true
         }
+      },
+      {
+        "field_id": "related_sandbox_usage_record",
+        "label": "Related Sandbox Usage Record",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "sandbox_usage_record",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
+      },
+      {
+        "field_id": "related_developer_test_run",
+        "label": "Related Developer Test Run",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "developer_test_run",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
+      },
+      {
+        "field_id": "related_developer_support_case",
+        "label": "Related Developer Support Case",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "developer_support_case",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
+      },
+      {
+        "field_id": "related_partner_api_key",
+        "label": "Related Partner Api Key",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "partner_api_key",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
       }
     ],
     "title_field": "title",
@@ -433,16 +534,23 @@
       {
         "role_id": "System Manager",
         "actions": [
-          "create",
-          "update",
           "view",
           "list",
-          "record",
-          "review",
-          "assign",
-          "track",
-          "monitor",
-          "confirm",
+          "create",
+          "provision",
+          "activate",
+          "suspend",
+          "expire",
+          "archive"
+        ]
+      },
+      {
+        "role_id": "case owner",
+        "actions": [
+          "view",
+          "list",
+          "create",
+          "activate",
           "archive"
         ]
       }
@@ -526,7 +634,32 @@
         "show_in_related_panel": true
       }
     ],
-    "lookup_rules": [],
+    "lookup_rules": [
+      {
+        "field_id": "related_sandbox_usage_record",
+        "doc_id": "sandbox_usage_record",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      },
+      {
+        "field_id": "related_developer_test_run",
+        "doc_id": "developer_test_run",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      },
+      {
+        "field_id": "related_developer_support_case",
+        "doc_id": "developer_support_case",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      },
+      {
+        "field_id": "related_partner_api_key",
+        "doc_id": "partner_api_key",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      }
+    ],
     "fetch_rules": [],
     "reference_map": {
       "primary_reference_field": "reference_no",
@@ -534,7 +667,12 @@
     },
     "relation_rules": {
       "parent_doc": null,
-      "child_docs": [],
+      "child_docs": [
+        "sandbox_usage_record",
+        "developer_test_run",
+        "developer_support_case",
+        "partner_api_key"
+      ],
       "show_related_panel": true
     },
     "borrowed_fields": [
@@ -555,7 +693,38 @@
     "runtime_hints": {
       "doc_key": "sandbox_account",
       "supports_related_lookup": true,
-      "supports_fetch_rules": true
+      "supports_fetch_rules": true,
+      "workflow_hints": {
+        "relation_context": {
+          "related_docs": [
+            "sandbox_usage_record",
+            "developer_test_run",
+            "developer_support_case",
+            "partner_api_key"
+          ],
+          "borrowed_fields": [
+            "developer/program access context from partner_api_key or developer account records"
+          ],
+          "inferred_roles": [
+            "case owner"
+          ]
+        },
+        "actors": [
+          "case owner"
+        ],
+        "action_actors": {
+          "create": [
+            "case owner"
+          ],
+          "activate": [
+            "case owner"
+          ],
+          "archive": [
+            "case owner"
+          ]
+        }
+      },
+      "action_side_effects_file": "side_effects.json"
     }
   },
   "classification": {
@@ -631,6 +800,9 @@
       "reports": "reports/service.py",
       "integrations": "integrations/service.py"
     },
+    "runtime_contract": {
+      "side_effects_file": "side_effects.json"
+    },
     "action_handlers": {
       "base_dir": "actions",
       "registry": "actions/registry.py",
@@ -649,6 +821,38 @@
       "doc_kind": "master"
     }
   },
+  "testing": {
+    "seeded": true,
+    "api_base_path": "/apis/developer_ecosystem/developer_tools/sandbox_accounts/sandbox_account/",
+    "status_field": "workflow_state",
+    "initial_state": "requested",
+    "required_fields": [
+      "title",
+      "workflow_state"
+    ],
+    "transition_scenarios": [
+      {
+        "action_id": "activate",
+        "source_state": "requested",
+        "target_state": "active",
+        "disallowed_state": "archived"
+      },
+      {
+        "action_id": "archive",
+        "source_state": "requested",
+        "target_state": "archived",
+        "disallowed_state": "archived"
+      }
+    ],
+    "related_docs": [
+      "sandbox_usage_record",
+      "developer_test_run",
+      "developer_support_case",
+      "partner_api_key"
+    ],
+    "downstream_effects": [],
+    "action_side_effects_file": "side_effects.json"
+  },
   "runtime": {
     "source_of_truth": "doc_folder",
     "generated_from": [
@@ -656,7 +860,8 @@
       "schema.json",
       "actions.json",
       "settings.json",
-      "logic_seed.json"
+      "logic_seed.json",
+      "side_effects.json"
     ],
     "generator": "plug.apps.doc.file_handler"
   }

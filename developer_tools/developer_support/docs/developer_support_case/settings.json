@@ -28,7 +28,26 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_sandbox_account",
+      "doc_id": "sandbox_account",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_api_access_case",
+      "doc_id": "api_access_case",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_developer_test_run",
+      "doc_id": "developer_test_run",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -36,7 +55,11 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "sandbox_account",
+      "api_access_case",
+      "developer_test_run"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [
@@ -57,6 +80,39 @@
   "runtime_hints": {
     "doc_key": "developer_support_case",
     "supports_related_lookup": true,
-    "supports_fetch_rules": true
+    "supports_fetch_rules": true,
+    "workflow_hints": {
+      "relation_context": {
+        "related_docs": [
+          "sandbox_account",
+          "api_access_case",
+          "developer_test_run"
+        ],
+        "borrowed_fields": [
+          "developer/program context from linked records"
+        ],
+        "inferred_roles": [
+          "case owner"
+        ]
+      },
+      "actors": [
+        "case owner"
+      ],
+      "action_actors": {
+        "create": [
+          "case owner"
+        ],
+        "assign": [
+          "case owner"
+        ],
+        "close": [
+          "case owner"
+        ],
+        "archive": [
+          "case owner"
+        ]
+      }
+    },
+    "action_side_effects_file": "side_effects.json"
   }
 }

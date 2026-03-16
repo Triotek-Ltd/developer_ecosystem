@@ -270,6 +270,102 @@
         "filterable": true,
         "sortable": true
       }
+    },
+    {
+      "field_id": "related_sandbox_usage_record",
+      "label": "Related Sandbox Usage Record",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "sandbox_usage_record",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
+    },
+    {
+      "field_id": "related_developer_test_run",
+      "label": "Related Developer Test Run",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "developer_test_run",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
+    },
+    {
+      "field_id": "related_developer_support_case",
+      "label": "Related Developer Support Case",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "developer_support_case",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
+    },
+    {
+      "field_id": "related_partner_api_key",
+      "label": "Related Partner Api Key",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "partner_api_key",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
     }
   ],
   "field_groups": {
@@ -292,7 +388,12 @@
       "sandbox_tier",
       "environment_scope"
     ],
-    "relations": [],
+    "relations": [
+      "related_sandbox_usage_record",
+      "related_developer_test_run",
+      "related_developer_support_case",
+      "related_partner_api_key"
+    ],
     "amounts": [],
     "dates": [
       "creation_date"
@@ -400,16 +501,23 @@
     {
       "role_id": "System Manager",
       "actions": [
-        "create",
-        "update",
         "view",
         "list",
-        "record",
-        "review",
-        "assign",
-        "track",
-        "monitor",
-        "confirm",
+        "create",
+        "provision",
+        "activate",
+        "suspend",
+        "expire",
+        "archive"
+      ]
+    },
+    {
+      "role_id": "case owner",
+      "actions": [
+        "view",
+        "list",
+        "create",
+        "activate",
         "archive"
       ]
     }

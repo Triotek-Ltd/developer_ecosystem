@@ -64,7 +64,10 @@
       "party": "primary_party",
       "currency": "currency_code",
       "total_amount": "total_amount",
-      "run_date": "schedule_marker"
+      "run_date": "schedule_marker",
+      "related_sandbox_usage_record": "relation_collection",
+      "related_sdk_release": "relation_collection",
+      "related_api_program_record": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -102,7 +105,36 @@
       "archive": "archived"
     }
   },
-  "workflow_hints": {},
+  "workflow_hints": {
+    "relation_context": {
+      "related_docs": [
+        "sandbox_account",
+        "sandbox_usage_record",
+        "sdk_release",
+        "api_program_record"
+      ],
+      "borrowed_field_context": [
+        "account",
+        "target-program context from linked docs"
+      ],
+      "inferred_roles": [
+        "Finance Officer"
+      ]
+    },
+    "actors": [
+      "Finance Officer"
+    ],
+    "action_actors": {
+      "create": [
+        "Finance Officer"
+      ],
+      "archive": [
+        "Finance Officer"
+      ]
+    }
+  },
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "sandbox_account",
     "sandbox_usage_record",

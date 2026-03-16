@@ -11,7 +11,7 @@ TERMINAL_STATES = ['closed', 'archived']
 ACTION_RULES = {'create': {'allowed_in_states': ['opened', 'in_review', 'approved', 'rejected', 'suspended'], 'transitions_to': None}, 'assign': {'allowed_in_states': ['opened', 'in_review', 'approved', 'rejected', 'suspended'], 'transitions_to': 'in_review'}, 'review': {'allowed_in_states': ['opened', 'in_review', 'approved', 'rejected', 'suspended'], 'transitions_to': 'in_review'}, 'approve': {'allowed_in_states': ['opened', 'in_review', 'approved', 'rejected', 'suspended'], 'transitions_to': 'approved'}, 'reject': {'allowed_in_states': ['opened', 'in_review', 'approved', 'rejected', 'suspended'], 'transitions_to': 'rejected'}, 'suspend': {'allowed_in_states': ['opened', 'in_review', 'approved', 'rejected', 'suspended'], 'transitions_to': None}, 'close': {'allowed_in_states': ['opened', 'in_review', 'approved', 'rejected', 'suspended'], 'transitions_to': 'closed'}, 'archive': {'allowed_in_states': ['opened', 'in_review', 'approved', 'rejected', 'suspended'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['api_program_record', 'partner_api_key', 'developer_support_case'], 'borrowed_fields': ['program', 'applicant context from linked docs'], 'inferred_roles': ['case owner']}, 'actors': ['case owner'], 'action_actors': {'create': ['case owner'], 'assign': ['case owner'], 'review': ['case owner'], 'approve': ['case owner'], 'reject': ['case owner'], 'close': ['case owner'], 'archive': ['case owner']}}
 
 class WorkflowService:
     def allowed_actions_for_state(self, state: str | None) -> list[str]:

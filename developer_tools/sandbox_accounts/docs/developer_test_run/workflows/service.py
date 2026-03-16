@@ -11,7 +11,7 @@ TERMINAL_STATES = ['archived']
 ACTION_RULES = {'create': {'allowed_in_states': ['queued', 'running', 'passed', 'failed'], 'transitions_to': None}, 'queue': {'allowed_in_states': ['queued', 'running', 'passed', 'failed'], 'transitions_to': None}, 'start': {'allowed_in_states': ['queued', 'running', 'passed', 'failed'], 'transitions_to': None}, 'pass': {'allowed_in_states': ['queued', 'running', 'passed', 'failed'], 'transitions_to': None}, 'fail': {'allowed_in_states': ['queued', 'running', 'passed', 'failed'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['queued', 'running', 'passed', 'failed'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['sandbox_account', 'sandbox_usage_record', 'sdk_release', 'api_program_record'], 'borrowed_field_context': ['account', 'target-program context from linked docs'], 'inferred_roles': ['Finance Officer']}, 'actors': ['Finance Officer'], 'action_actors': {'create': ['Finance Officer'], 'archive': ['Finance Officer']}}
 
 class WorkflowService:
     def allowed_actions_for_state(self, state: str | None) -> list[str]:

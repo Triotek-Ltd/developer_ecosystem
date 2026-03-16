@@ -35,7 +35,26 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_sandbox_usage_record",
+      "doc_id": "sandbox_usage_record",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_sdk_release",
+      "doc_id": "sdk_release",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_api_program_record",
+      "doc_id": "api_program_record",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -43,7 +62,11 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "sandbox_usage_record",
+      "sdk_release",
+      "api_program_record"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [
@@ -67,6 +90,35 @@
   "runtime_hints": {
     "doc_key": "developer_test_run",
     "supports_related_lookup": true,
-    "supports_fetch_rules": true
+    "supports_fetch_rules": true,
+    "workflow_hints": {
+      "relation_context": {
+        "related_docs": [
+          "sandbox_account",
+          "sandbox_usage_record",
+          "sdk_release",
+          "api_program_record"
+        ],
+        "borrowed_field_context": [
+          "account",
+          "target-program context from linked docs"
+        ],
+        "inferred_roles": [
+          "Finance Officer"
+        ]
+      },
+      "actors": [
+        "Finance Officer"
+      ],
+      "action_actors": {
+        "create": [
+          "Finance Officer"
+        ],
+        "archive": [
+          "Finance Officer"
+        ]
+      }
+    },
+    "action_side_effects_file": "side_effects.json"
   }
 }

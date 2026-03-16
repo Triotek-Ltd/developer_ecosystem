@@ -8,7 +8,7 @@ ACTION_ID = "resolve"
 ACTION_RULE = {'allowed_in_states': ['opened', 'assigned', 'in_progress', 'resolved', 'escalated'], 'transitions_to': 'resolved'}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['sandbox_account', 'api_access_case', 'developer_test_run'], 'borrowed_fields': ['developer/program context from linked records'], 'inferred_roles': ['case owner']}, 'actors': ['case owner'], 'action_actors': {'create': ['case owner'], 'assign': ['case owner'], 'close': ['case owner'], 'archive': ['case owner']}}
 
 def handle_resolve(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

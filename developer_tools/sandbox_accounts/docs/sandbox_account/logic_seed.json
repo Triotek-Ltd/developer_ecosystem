@@ -61,7 +61,11 @@
     "field_purposes": {
       "workflow_state": "lifecycle_state",
       "creation_date": "schedule_marker",
-      "account_status": "status_flag"
+      "account_status": "status_flag",
+      "related_sandbox_usage_record": "relation_collection",
+      "related_developer_test_run": "relation_collection",
+      "related_developer_support_case": "relation_collection",
+      "related_partner_api_key": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -98,7 +102,38 @@
       "archive": "archived"
     }
   },
-  "workflow_hints": {},
+  "workflow_hints": {
+    "relation_context": {
+      "related_docs": [
+        "sandbox_usage_record",
+        "developer_test_run",
+        "developer_support_case",
+        "partner_api_key"
+      ],
+      "borrowed_fields": [
+        "developer/program access context from partner_api_key or developer account records"
+      ],
+      "inferred_roles": [
+        "case owner"
+      ]
+    },
+    "actors": [
+      "case owner"
+    ],
+    "action_actors": {
+      "create": [
+        "case owner"
+      ],
+      "activate": [
+        "case owner"
+      ],
+      "archive": [
+        "case owner"
+      ]
+    }
+  },
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "sandbox_usage_record",
     "developer_test_run",

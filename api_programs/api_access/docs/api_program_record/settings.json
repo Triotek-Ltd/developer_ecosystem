@@ -33,7 +33,32 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_partner_api_key",
+      "doc_id": "partner_api_key",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_webhook_subscription",
+      "doc_id": "webhook_subscription",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_api_access_case",
+      "doc_id": "api_access_case",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_developer_documentation_release",
+      "doc_id": "developer_documentation_release",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -41,7 +66,12 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "partner_api_key",
+      "webhook_subscription",
+      "api_access_case",
+      "developer_documentation_release"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [],
@@ -58,6 +88,55 @@
   "runtime_hints": {
     "doc_key": "api_program_record",
     "supports_related_lookup": true,
-    "supports_fetch_rules": true
+    "supports_fetch_rules": true,
+    "workflow_hints": {
+      "business_objective": "define, review, activate, and retire API programs with the right access and partner-governance controls",
+      "actors": [
+        "API owner",
+        "security reviewer",
+        "partner admin"
+      ],
+      "start_condition": "a partner requests or uses API-program access",
+      "ordered_steps": [
+        "Create or update the API program.",
+        "Review the access and governance posture.",
+        "Activate or retire the program."
+      ],
+      "primary_actions": [
+        "create",
+        "update",
+        "review",
+        "activate",
+        "retire"
+      ],
+      "action_actors": {
+        "create": [
+          "API owner"
+        ],
+        "update": [
+          "API owner"
+        ],
+        "review": [
+          "security reviewer"
+        ],
+        "activate": [
+          "API owner",
+          "security reviewer"
+        ],
+        "retire": [
+          "API owner"
+        ],
+        "archive": [
+          "API owner"
+        ]
+      },
+      "primary_transitions": [
+        "api_program_record: draft -> active -> retired"
+      ],
+      "downstream_effects": [
+        "drives access review, key issuance readiness, and partner integration onboarding"
+      ]
+    },
+    "action_side_effects_file": "side_effects.json"
   }
 }

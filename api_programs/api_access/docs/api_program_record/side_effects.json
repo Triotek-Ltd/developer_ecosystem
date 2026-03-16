@@ -1,0 +1,82 @@
+{
+  "create": [
+    {
+      "type": "update_current",
+      "fields": {
+        "workflow_state": "draft"
+      }
+    }
+  ],
+  "update": [
+    {
+      "type": "update_current",
+      "fields": {
+        "workflow_state": "draft"
+      }
+    }
+  ],
+  "review": [
+    {
+      "type": "update_current",
+      "fields": {
+        "workflow_state": "draft"
+      }
+    }
+  ],
+  "activate": [
+    {
+      "type": "update_current",
+      "fields": {
+        "active_state": "active"
+      }
+    },
+    {
+      "type": "create_record",
+      "effect_id": "api_access_case",
+      "target_doc": "api_access_case",
+      "lookup": {
+        "reference_no": {
+          "$template": "APIACT-{program_code|reference_no|pk}"
+        }
+      },
+      "values": {
+        "title": {
+          "$template": "API Access Case {program_code|reference_no|pk}"
+        },
+        "reference_no": {
+          "$template": "APIACT-{program_code|reference_no|pk}"
+        },
+        "requesting_party": {
+          "$from": [
+            "audience_type"
+          ]
+        },
+        "program_scope": {
+          "$from": [
+            "scope_summary"
+          ]
+        },
+        "review_reason": "program_activation",
+        "approver": "security_reviewer",
+        "disposition": "approved",
+        "workflow_state": "approved"
+      }
+    }
+  ],
+  "retire": [
+    {
+      "type": "update_current",
+      "fields": {
+        "active_state": "retired"
+      }
+    }
+  ],
+  "archive": [
+    {
+      "type": "update_current",
+      "fields": {
+        "workflow_state": "archived"
+      }
+    }
+  ]
+}

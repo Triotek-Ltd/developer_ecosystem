@@ -35,7 +35,26 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_api_program_record",
+      "doc_id": "api_program_record",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_partner_api_key",
+      "doc_id": "partner_api_key",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_processor_event_log",
+      "doc_id": "processor_event_log",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -43,7 +62,11 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "api_program_record",
+      "partner_api_key",
+      "processor_event_log"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [
@@ -67,6 +90,7 @@
   "runtime_hints": {
     "doc_key": "webhook_subscription",
     "supports_related_lookup": true,
-    "supports_fetch_rules": true
+    "supports_fetch_rules": true,
+    "action_side_effects_file": "side_effects.json"
   }
 }

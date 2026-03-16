@@ -11,7 +11,7 @@ TERMINAL_STATES = ['archived']
 ACTION_RULES = {'create': {'allowed_in_states': ['requested', 'issued', 'active', 'suspended', 'revoked'], 'transitions_to': None}, 'issue': {'allowed_in_states': ['requested', 'issued', 'active', 'suspended', 'revoked'], 'transitions_to': 'issued'}, 'activate': {'allowed_in_states': ['requested'], 'transitions_to': 'active'}, 'rotate': {'allowed_in_states': ['requested', 'issued', 'active', 'suspended', 'revoked'], 'transitions_to': None}, 'suspend': {'allowed_in_states': ['requested', 'issued', 'active', 'suspended', 'revoked'], 'transitions_to': None}, 'revoke': {'allowed_in_states': ['requested', 'issued', 'active', 'suspended', 'revoked'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['requested', 'issued', 'active', 'suspended', 'revoked'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['api_program_record', 'api_access_case', 'sandbox_account'], 'borrowed_fields': ['program scope', 'access policy from api_program_record'], 'inferred_roles': ['compliance officer', 'case owner']}, 'actors': ['compliance officer', 'case owner'], 'action_actors': {'create': ['compliance officer'], 'issue': ['case owner'], 'activate': ['case owner'], 'archive': ['case owner']}}
 
 class WorkflowService:
     def allowed_actions_for_state(self, state: str | None) -> list[str]:

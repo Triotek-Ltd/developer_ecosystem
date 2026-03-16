@@ -23,7 +23,14 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_developer_test_run",
+      "doc_id": "developer_test_run",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -31,7 +38,9 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "developer_test_run"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [
@@ -55,6 +64,36 @@
   "runtime_hints": {
     "doc_key": "sandbox_usage_record",
     "supports_related_lookup": true,
-    "supports_fetch_rules": true
+    "supports_fetch_rules": true,
+    "workflow_hints": {
+      "relation_context": {
+        "related_docs": [
+          "sandbox_account",
+          "developer_test_run"
+        ],
+        "borrowed_field_context": [
+          "account tier",
+          "scope from sandbox_account"
+        ],
+        "inferred_roles": [
+          "Finance Officer"
+        ]
+      },
+      "actors": [
+        "Finance Officer"
+      ],
+      "action_actors": {
+        "record": [
+          "Finance Officer"
+        ],
+        "review": [
+          "Finance Officer"
+        ],
+        "archive": [
+          "Finance Officer"
+        ]
+      }
+    },
+    "action_side_effects_file": "side_effects.json"
   }
 }

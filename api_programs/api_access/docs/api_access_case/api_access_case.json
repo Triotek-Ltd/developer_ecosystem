@@ -73,7 +73,11 @@
         "approver",
         "disposition"
       ],
-      "relations": [],
+      "relations": [
+        "related_api_program_record",
+        "related_partner_api_key",
+        "related_developer_support_case"
+      ],
       "amounts": [],
       "dates": [],
       "parties": [
@@ -333,6 +337,78 @@
           "filterable": true,
           "sortable": true
         }
+      },
+      {
+        "field_id": "related_api_program_record",
+        "label": "Related Api Program Record",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "api_program_record",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
+      },
+      {
+        "field_id": "related_partner_api_key",
+        "label": "Related Partner Api Key",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "partner_api_key",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
+      },
+      {
+        "field_id": "related_developer_support_case",
+        "label": "Related Developer Support Case",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "developer_support_case",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
       }
     ],
     "title_field": "title",
@@ -465,16 +541,29 @@
       {
         "role_id": "System Manager",
         "actions": [
-          "create",
-          "update",
           "view",
           "list",
-          "record",
-          "review",
+          "create",
           "assign",
-          "track",
-          "monitor",
-          "confirm",
+          "review",
+          "approve",
+          "reject",
+          "suspend",
+          "close",
+          "archive"
+        ]
+      },
+      {
+        "role_id": "case owner",
+        "actions": [
+          "view",
+          "list",
+          "create",
+          "assign",
+          "review",
+          "approve",
+          "reject",
+          "close",
           "archive"
         ]
       }
@@ -553,7 +642,26 @@
         "show_in_related_panel": true
       }
     ],
-    "lookup_rules": [],
+    "lookup_rules": [
+      {
+        "field_id": "related_api_program_record",
+        "doc_id": "api_program_record",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      },
+      {
+        "field_id": "related_partner_api_key",
+        "doc_id": "partner_api_key",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      },
+      {
+        "field_id": "related_developer_support_case",
+        "doc_id": "developer_support_case",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      }
+    ],
     "fetch_rules": [],
     "reference_map": {
       "primary_reference_field": "reference_no",
@@ -561,7 +669,11 @@
     },
     "relation_rules": {
       "parent_doc": null,
-      "child_docs": [],
+      "child_docs": [
+        "api_program_record",
+        "partner_api_key",
+        "developer_support_case"
+      ],
       "show_related_panel": true
     },
     "borrowed_fields": [
@@ -585,7 +697,50 @@
     "runtime_hints": {
       "doc_key": "api_access_case",
       "supports_related_lookup": true,
-      "supports_fetch_rules": true
+      "supports_fetch_rules": true,
+      "workflow_hints": {
+        "relation_context": {
+          "related_docs": [
+            "api_program_record",
+            "partner_api_key",
+            "developer_support_case"
+          ],
+          "borrowed_fields": [
+            "program",
+            "applicant context from linked docs"
+          ],
+          "inferred_roles": [
+            "case owner"
+          ]
+        },
+        "actors": [
+          "case owner"
+        ],
+        "action_actors": {
+          "create": [
+            "case owner"
+          ],
+          "assign": [
+            "case owner"
+          ],
+          "review": [
+            "case owner"
+          ],
+          "approve": [
+            "case owner"
+          ],
+          "reject": [
+            "case owner"
+          ],
+          "close": [
+            "case owner"
+          ],
+          "archive": [
+            "case owner"
+          ]
+        }
+      },
+      "action_side_effects_file": "side_effects.json"
     }
   },
   "classification": {
@@ -661,6 +816,9 @@
       "reports": "reports/service.py",
       "integrations": "integrations/service.py"
     },
+    "runtime_contract": {
+      "side_effects_file": "side_effects.json"
+    },
     "action_handlers": {
       "base_dir": "actions",
       "registry": "actions/registry.py",
@@ -681,6 +839,61 @@
       "doc_kind": "workflow_case"
     }
   },
+  "testing": {
+    "seeded": true,
+    "api_base_path": "/apis/developer_ecosystem/api_programs/api_access/api_access_case/",
+    "status_field": "workflow_state",
+    "initial_state": "opened",
+    "required_fields": [
+      "title",
+      "workflow_state"
+    ],
+    "transition_scenarios": [
+      {
+        "action_id": "assign",
+        "source_state": "opened",
+        "target_state": "in_review",
+        "disallowed_state": "closed"
+      },
+      {
+        "action_id": "review",
+        "source_state": "opened",
+        "target_state": "in_review",
+        "disallowed_state": "closed"
+      },
+      {
+        "action_id": "approve",
+        "source_state": "opened",
+        "target_state": "approved",
+        "disallowed_state": "closed"
+      },
+      {
+        "action_id": "reject",
+        "source_state": "opened",
+        "target_state": "rejected",
+        "disallowed_state": "closed"
+      },
+      {
+        "action_id": "close",
+        "source_state": "opened",
+        "target_state": "closed",
+        "disallowed_state": "closed"
+      },
+      {
+        "action_id": "archive",
+        "source_state": "opened",
+        "target_state": "archived",
+        "disallowed_state": "closed"
+      }
+    ],
+    "related_docs": [
+      "api_program_record",
+      "partner_api_key",
+      "developer_support_case"
+    ],
+    "downstream_effects": [],
+    "action_side_effects_file": "side_effects.json"
+  },
   "runtime": {
     "source_of_truth": "doc_folder",
     "generated_from": [
@@ -688,7 +901,8 @@
       "schema.json",
       "actions.json",
       "settings.json",
-      "logic_seed.json"
+      "logic_seed.json",
+      "side_effects.json"
     ],
     "generator": "plug.apps.doc.file_handler"
   }

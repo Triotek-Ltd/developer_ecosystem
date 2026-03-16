@@ -64,7 +64,10 @@
       "workflow_state"
     ],
     "field_purposes": {
-      "workflow_state": "lifecycle_state"
+      "workflow_state": "lifecycle_state",
+      "related_sandbox_account": "relation_collection",
+      "related_api_access_case": "relation_collection",
+      "related_developer_test_run": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -104,7 +107,40 @@
       "archive": "archived"
     }
   },
-  "workflow_hints": {},
+  "workflow_hints": {
+    "relation_context": {
+      "related_docs": [
+        "sandbox_account",
+        "api_access_case",
+        "developer_test_run"
+      ],
+      "borrowed_fields": [
+        "developer/program context from linked records"
+      ],
+      "inferred_roles": [
+        "case owner"
+      ]
+    },
+    "actors": [
+      "case owner"
+    ],
+    "action_actors": {
+      "create": [
+        "case owner"
+      ],
+      "assign": [
+        "case owner"
+      ],
+      "close": [
+        "case owner"
+      ],
+      "archive": [
+        "case owner"
+      ]
+    }
+  },
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "sandbox_account",
     "api_access_case",

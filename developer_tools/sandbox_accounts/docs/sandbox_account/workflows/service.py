@@ -11,7 +11,7 @@ TERMINAL_STATES = ['archived']
 ACTION_RULES = {'create': {'allowed_in_states': ['requested', 'provisioned', 'active', 'suspended', 'expired'], 'transitions_to': None}, 'provision': {'allowed_in_states': ['requested', 'provisioned', 'active', 'suspended', 'expired'], 'transitions_to': None}, 'activate': {'allowed_in_states': ['requested'], 'transitions_to': 'active'}, 'suspend': {'allowed_in_states': ['requested', 'provisioned', 'active', 'suspended', 'expired'], 'transitions_to': None}, 'expire': {'allowed_in_states': ['requested', 'provisioned', 'active', 'suspended', 'expired'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['requested', 'provisioned', 'active', 'suspended', 'expired'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['sandbox_usage_record', 'developer_test_run', 'developer_support_case', 'partner_api_key'], 'borrowed_fields': ['developer/program access context from partner_api_key or developer account records'], 'inferred_roles': ['case owner']}, 'actors': ['case owner'], 'action_actors': {'create': ['case owner'], 'activate': ['case owner'], 'archive': ['case owner']}}
 
 class WorkflowService:
     def allowed_actions_for_state(self, state: str | None) -> list[str]:

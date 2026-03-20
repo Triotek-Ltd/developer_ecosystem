@@ -6,7 +6,7 @@ from core.services.relation_resolution import RelationResolutionService
 
 
 DOC_ID = "api_access_case"
-RELATED_DOCS = [{'doc_id': 'api_program_record', 'relation_type': 'related', 'show_in_related_panel': True}, {'doc_id': 'partner_api_key', 'relation_type': 'related', 'show_in_related_panel': True}, {'doc_id': 'developer_support_case', 'relation_type': 'related', 'show_in_related_panel': True}]
+RELATED_DOCS = [{'doc_id': 'api_program_record', 'relation_type': 'related', 'show_in_related_panel': True}, {'doc_id': 'partner_api_key', 'relation_type': 'related', 'show_in_related_panel': True}, {'doc_id': 'developer_support_case', 'relation_type': 'related', 'show_in_related_panel': True}, {'doc_id': 'employee_record', 'relation_type': 'related', 'show_in_related_panel': True}]
 FETCH_RULES = []
 
 BORROWED_FIELDS = [{'description': 'program'}, {'description': 'applicant context from linked docs'}]

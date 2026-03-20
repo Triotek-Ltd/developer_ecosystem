@@ -8,5 +8,1622 @@
     "id": "CUSTOM-PROPRIETARY",
     "type": "proprietary_custom",
     "terms_ref": "LICENSE"
+  },
+  "ui": {
+    "icon_key": "apps",
+    "accent": "#246f89",
+    "logo_image": null,
+    "cover_image": null
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "app",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "modules",
+      "flatten_submodules_in_ui": false
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "My Plug App KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "app",
+          "entity_id": "developer_ecosystem",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "My Plug App summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "app",
+          "entity_id": "developer_ecosystem",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "My Plug App charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "app",
+          "entity_id": "developer_ecosystem",
+          "metric_family": "trend"
+        },
+        "chart_specs": [
+          {
+            "id": "developer_ecosystem_trend_line",
+            "label": "My Plug App trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "developer_ecosystem_volume_column",
+            "label": "My Plug App volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "developer_ecosystem_distribution_donut",
+            "label": "My Plug App distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "api_programs_trend_line",
+            "label": "Api Programs trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "api_programs_volume_column",
+            "label": "Api Programs volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "api_programs_distribution_donut",
+            "label": "Api Programs distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "api_access_case_trend_line",
+            "label": "Api Access Case trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "api_access_case_volume_column",
+            "label": "Api Access Case volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "api_access_case_distribution_donut",
+            "label": "Api Access Case distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "api_program_record_trend_line",
+            "label": "Api Program Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "api_program_record_volume_column",
+            "label": "Api Program Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "api_program_record_distribution_donut",
+            "label": "Api Program Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "partner_api_key_trend_line",
+            "label": "Partner Api Key trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "partner_api_key_volume_column",
+            "label": "Partner Api Key volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "partner_api_key_distribution_donut",
+            "label": "Partner Api Key distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "webhook_subscription_trend_line",
+            "label": "Webhook Subscription trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "webhook_subscription_volume_column",
+            "label": "Webhook Subscription volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "webhook_subscription_distribution_donut",
+            "label": "Webhook Subscription distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "developer_tools_trend_line",
+            "label": "Developer Tools trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "developer_tools_volume_column",
+            "label": "Developer Tools volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "developer_tools_distribution_donut",
+            "label": "Developer Tools distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "developer_support_case_trend_line",
+            "label": "Developer Support Case trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "developer_support_case_volume_column",
+            "label": "Developer Support Case volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "developer_support_case_distribution_donut",
+            "label": "Developer Support Case distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "developer_test_run_trend_line",
+            "label": "Developer Test Run trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "developer_test_run_volume_column",
+            "label": "Developer Test Run volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "developer_test_run_distribution_donut",
+            "label": "Developer Test Run distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "sandbox_account_trend_line",
+            "label": "Sandbox Account trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "sandbox_account_volume_column",
+            "label": "Sandbox Account volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "sandbox_account_distribution_donut",
+            "label": "Sandbox Account distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "sandbox_usage_record_trend_line",
+            "label": "Sandbox Usage Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "sandbox_usage_record_volume_column",
+            "label": "Sandbox Usage Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "sandbox_usage_record_distribution_donut",
+            "label": "Sandbox Usage Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "sdk_distribution_trend_line",
+            "label": "Sdk Distribution trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "sdk_distribution_volume_column",
+            "label": "Sdk Distribution volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "sdk_distribution_distribution_donut",
+            "label": "Sdk Distribution distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "developer_documentation_release_trend_line",
+            "label": "Developer Documentation Release trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "developer_documentation_release_volume_column",
+            "label": "Developer Documentation Release volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "developer_documentation_release_distribution_donut",
+            "label": "Developer Documentation Release distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "sdk_package_trend_line",
+            "label": "Sdk Package trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "sdk_package_volume_column",
+            "label": "Sdk Package volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "sdk_package_distribution_donut",
+            "label": "Sdk Package distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "sdk_release_trend_line",
+            "label": "Sdk Release trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "sdk_release_volume_column",
+            "label": "Sdk Release volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "sdk_release_distribution_donut",
+            "label": "Sdk Release distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "My Plug App reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "app",
+          "entity_id": "developer_ecosystem",
+          "metric_family": "reporting"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "app",
+        "entity_id": "developer_ecosystem",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "app",
+        "entity_id": "developer_ecosystem",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "app",
+        "entity_id": "developer_ecosystem",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "app",
+        "entity_id": "developer_ecosystem",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "My Plug App Overview",
+        "report_type": "dashboard_summary",
+        "surface": "app"
+      },
+      {
+        "id": "trend_report",
+        "label": "My Plug App Trends",
+        "report_type": "trend_analysis",
+        "surface": "app"
+      },
+      {
+        "id": "summary_report",
+        "label": "Api Access Case Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Api Access Case Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "developer_ecosystem_trend_line",
+        "label": "My Plug App trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "developer_ecosystem_volume_column",
+        "label": "My Plug App volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "developer_ecosystem_distribution_donut",
+        "label": "My Plug App distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "api_programs_trend_line",
+        "label": "Api Programs trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "api_programs_volume_column",
+        "label": "Api Programs volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "api_programs_distribution_donut",
+        "label": "Api Programs distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "api_access_case_trend_line",
+        "label": "Api Access Case trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "api_access_case_volume_column",
+        "label": "Api Access Case volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "api_access_case_distribution_donut",
+        "label": "Api Access Case distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "api_program_record_trend_line",
+        "label": "Api Program Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "api_program_record_volume_column",
+        "label": "Api Program Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "api_program_record_distribution_donut",
+        "label": "Api Program Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "partner_api_key_trend_line",
+        "label": "Partner Api Key trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "partner_api_key_volume_column",
+        "label": "Partner Api Key volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "partner_api_key_distribution_donut",
+        "label": "Partner Api Key distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "webhook_subscription_trend_line",
+        "label": "Webhook Subscription trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "webhook_subscription_volume_column",
+        "label": "Webhook Subscription volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "webhook_subscription_distribution_donut",
+        "label": "Webhook Subscription distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "developer_tools_trend_line",
+        "label": "Developer Tools trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "developer_tools_volume_column",
+        "label": "Developer Tools volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "developer_tools_distribution_donut",
+        "label": "Developer Tools distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "developer_support_case_trend_line",
+        "label": "Developer Support Case trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "developer_support_case_volume_column",
+        "label": "Developer Support Case volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "developer_support_case_distribution_donut",
+        "label": "Developer Support Case distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "developer_test_run_trend_line",
+        "label": "Developer Test Run trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "developer_test_run_volume_column",
+        "label": "Developer Test Run volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "developer_test_run_distribution_donut",
+        "label": "Developer Test Run distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "sandbox_account_trend_line",
+        "label": "Sandbox Account trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "sandbox_account_volume_column",
+        "label": "Sandbox Account volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "sandbox_account_distribution_donut",
+        "label": "Sandbox Account distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "sandbox_usage_record_trend_line",
+        "label": "Sandbox Usage Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "sandbox_usage_record_volume_column",
+        "label": "Sandbox Usage Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "sandbox_usage_record_distribution_donut",
+        "label": "Sandbox Usage Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "sdk_distribution_trend_line",
+        "label": "Sdk Distribution trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "sdk_distribution_volume_column",
+        "label": "Sdk Distribution volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "sdk_distribution_distribution_donut",
+        "label": "Sdk Distribution distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "developer_documentation_release_trend_line",
+        "label": "Developer Documentation Release trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "developer_documentation_release_volume_column",
+        "label": "Developer Documentation Release volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "developer_documentation_release_distribution_donut",
+        "label": "Developer Documentation Release distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "sdk_package_trend_line",
+        "label": "Sdk Package trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "sdk_package_volume_column",
+        "label": "Sdk Package volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "sdk_package_distribution_donut",
+        "label": "Sdk Package distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "sdk_release_trend_line",
+        "label": "Sdk Release trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "sdk_release_volume_column",
+        "label": "Sdk Release volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "sdk_release_distribution_donut",
+        "label": "Sdk Release distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ],
+    "source_docs": [],
+    "source_fields": [],
+    "child_sources": [
+      {
+        "id": "api_programs",
+        "title": "Api Programs",
+        "surface": "module",
+        "source_docs": []
+      },
+      {
+        "id": "developer_tools",
+        "title": "Developer Tools",
+        "surface": "module",
+        "source_docs": []
+      },
+      {
+        "id": "sdk_distribution",
+        "title": "Sdk Distribution",
+        "surface": "module",
+        "source_docs": []
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "api_program_record",
+      "partner_api_key",
+      "developer_support_case",
+      "webhook_subscription",
+      "api_access_case",
+      "developer_documentation_release",
+      "sandbox_account",
+      "processor_event_log",
+      "developer_test_run",
+      "sandbox_usage_record",
+      "sdk_release",
+      "sdk_package"
+    ],
+    "upstream_docs": [
+      "api_program_record",
+      "partner_api_key",
+      "developer_support_case",
+      "webhook_subscription",
+      "api_access_case",
+      "developer_documentation_release",
+      "sandbox_account",
+      "processor_event_log",
+      "developer_test_run",
+      "sandbox_usage_record",
+      "sdk_release",
+      "sdk_package"
+    ],
+    "downstream_docs": [
+      "developer_support_case",
+      "api_access_case",
+      "api_program_record",
+      "sandbox_usage_record"
+    ],
+    "actors": [
+      "case owner",
+      "API owner",
+      "security reviewer",
+      "partner admin",
+      "compliance officer",
+      "Finance Officer"
+    ],
+    "downstream_effects": [
+      "drives access review, key issuance readiness, and partner integration onboarding"
+    ],
+    "emits_records": [
+      {
+        "action_id": "approve",
+        "target_doc": "developer_support_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "close",
+        "target_doc": "developer_support_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "assign",
+        "target_doc": "developer_support_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "activate",
+        "target_doc": "api_access_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "issue",
+        "target_doc": "api_access_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "activate",
+        "target_doc": "api_program_record",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "resolve",
+        "target_doc": "api_access_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "close",
+        "target_doc": "api_access_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "assign",
+        "target_doc": "api_access_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "activate",
+        "target_doc": "sandbox_usage_record",
+        "effect_type": "create_record"
+      }
+    ],
+    "handoff_targets": [
+      "api_program_record",
+      "partner_api_key",
+      "developer_support_case",
+      "webhook_subscription",
+      "api_access_case",
+      "developer_documentation_release",
+      "sandbox_account",
+      "processor_event_log",
+      "developer_test_run",
+      "sandbox_usage_record",
+      "sdk_release",
+      "sdk_package"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "api_access_case",
+        "target_doc": "api_program_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "api_access_case",
+        "target_doc": "partner_api_key",
+        "relation": "references"
+      },
+      {
+        "source_doc": "api_access_case",
+        "target_doc": "developer_support_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "api_access_case",
+        "target_doc": "developer_support_case",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "api_access_case",
+        "target_doc": "developer_support_case",
+        "relation": "create_record",
+        "action_id": "close"
+      },
+      {
+        "source_doc": "api_access_case",
+        "target_doc": "developer_support_case",
+        "relation": "create_record",
+        "action_id": "assign"
+      },
+      {
+        "source_doc": "api_program_record",
+        "target_doc": "partner_api_key",
+        "relation": "references"
+      },
+      {
+        "source_doc": "api_program_record",
+        "target_doc": "webhook_subscription",
+        "relation": "references"
+      },
+      {
+        "source_doc": "api_program_record",
+        "target_doc": "api_access_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "api_program_record",
+        "target_doc": "developer_documentation_release",
+        "relation": "references"
+      },
+      {
+        "source_doc": "api_program_record",
+        "target_doc": "api_access_case",
+        "relation": "create_record",
+        "action_id": "activate"
+      },
+      {
+        "source_doc": "partner_api_key",
+        "target_doc": "api_program_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "partner_api_key",
+        "target_doc": "api_access_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "partner_api_key",
+        "target_doc": "sandbox_account",
+        "relation": "references"
+      },
+      {
+        "source_doc": "partner_api_key",
+        "target_doc": "api_access_case",
+        "relation": "create_record",
+        "action_id": "issue"
+      },
+      {
+        "source_doc": "partner_api_key",
+        "target_doc": "api_access_case",
+        "relation": "create_record",
+        "action_id": "activate"
+      },
+      {
+        "source_doc": "webhook_subscription",
+        "target_doc": "api_program_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "webhook_subscription",
+        "target_doc": "partner_api_key",
+        "relation": "references"
+      },
+      {
+        "source_doc": "webhook_subscription",
+        "target_doc": "processor_event_log",
+        "relation": "references"
+      },
+      {
+        "source_doc": "webhook_subscription",
+        "target_doc": "api_program_record",
+        "relation": "create_record",
+        "action_id": "activate"
+      },
+      {
+        "source_doc": "developer_support_case",
+        "target_doc": "sandbox_account",
+        "relation": "references"
+      },
+      {
+        "source_doc": "developer_support_case",
+        "target_doc": "api_access_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "developer_support_case",
+        "target_doc": "developer_test_run",
+        "relation": "references"
+      },
+      {
+        "source_doc": "developer_support_case",
+        "target_doc": "api_access_case",
+        "relation": "create_record",
+        "action_id": "resolve"
+      },
+      {
+        "source_doc": "developer_support_case",
+        "target_doc": "api_access_case",
+        "relation": "create_record",
+        "action_id": "close"
+      },
+      {
+        "source_doc": "developer_support_case",
+        "target_doc": "api_access_case",
+        "relation": "create_record",
+        "action_id": "assign"
+      },
+      {
+        "source_doc": "developer_test_run",
+        "target_doc": "sandbox_account",
+        "relation": "references"
+      },
+      {
+        "source_doc": "developer_test_run",
+        "target_doc": "sandbox_usage_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "developer_test_run",
+        "target_doc": "sdk_release",
+        "relation": "references"
+      },
+      {
+        "source_doc": "developer_test_run",
+        "target_doc": "api_program_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "sandbox_account",
+        "target_doc": "sandbox_usage_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "sandbox_account",
+        "target_doc": "developer_test_run",
+        "relation": "references"
+      },
+      {
+        "source_doc": "sandbox_account",
+        "target_doc": "developer_support_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "sandbox_account",
+        "target_doc": "partner_api_key",
+        "relation": "references"
+      },
+      {
+        "source_doc": "sandbox_account",
+        "target_doc": "sandbox_usage_record",
+        "relation": "create_record",
+        "action_id": "activate"
+      },
+      {
+        "source_doc": "sandbox_usage_record",
+        "target_doc": "sandbox_account",
+        "relation": "references"
+      },
+      {
+        "source_doc": "sandbox_usage_record",
+        "target_doc": "developer_test_run",
+        "relation": "references"
+      },
+      {
+        "source_doc": "developer_documentation_release",
+        "target_doc": "sdk_release",
+        "relation": "references"
+      },
+      {
+        "source_doc": "developer_documentation_release",
+        "target_doc": "sdk_package",
+        "relation": "references"
+      },
+      {
+        "source_doc": "developer_documentation_release",
+        "target_doc": "api_program_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "sdk_package",
+        "target_doc": "sdk_release",
+        "relation": "references"
+      },
+      {
+        "source_doc": "sdk_package",
+        "target_doc": "developer_documentation_release",
+        "relation": "references"
+      },
+      {
+        "source_doc": "sdk_release",
+        "target_doc": "sdk_package",
+        "relation": "references"
+      },
+      {
+        "source_doc": "sdk_release",
+        "target_doc": "developer_documentation_release",
+        "relation": "references"
+      }
+    ],
+    "operating_graph": {
+      "nodes": [
+        {
+          "id": "api_programs",
+          "kind": "module",
+          "title": "Api Programs"
+        },
+        {
+          "id": "developer_tools",
+          "kind": "module",
+          "title": "Developer Tools"
+        },
+        {
+          "id": "sdk_distribution",
+          "kind": "module",
+          "title": "Sdk Distribution"
+        },
+        {
+          "id": "api_program_record",
+          "kind": "doc"
+        },
+        {
+          "id": "partner_api_key",
+          "kind": "doc"
+        },
+        {
+          "id": "developer_support_case",
+          "kind": "doc"
+        },
+        {
+          "id": "webhook_subscription",
+          "kind": "doc"
+        },
+        {
+          "id": "api_access_case",
+          "kind": "doc"
+        },
+        {
+          "id": "developer_documentation_release",
+          "kind": "doc"
+        },
+        {
+          "id": "sandbox_account",
+          "kind": "doc"
+        },
+        {
+          "id": "processor_event_log",
+          "kind": "doc"
+        },
+        {
+          "id": "developer_test_run",
+          "kind": "doc"
+        },
+        {
+          "id": "sandbox_usage_record",
+          "kind": "doc"
+        },
+        {
+          "id": "sdk_release",
+          "kind": "doc"
+        },
+        {
+          "id": "sdk_package",
+          "kind": "doc"
+        }
+      ],
+      "edges": [
+        {
+          "source_doc": "api_access_case",
+          "target_doc": "api_program_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "api_access_case",
+          "target_doc": "partner_api_key",
+          "relation": "references"
+        },
+        {
+          "source_doc": "api_access_case",
+          "target_doc": "developer_support_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "api_access_case",
+          "target_doc": "developer_support_case",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "api_access_case",
+          "target_doc": "developer_support_case",
+          "relation": "create_record",
+          "action_id": "close"
+        },
+        {
+          "source_doc": "api_access_case",
+          "target_doc": "developer_support_case",
+          "relation": "create_record",
+          "action_id": "assign"
+        },
+        {
+          "source_doc": "api_program_record",
+          "target_doc": "partner_api_key",
+          "relation": "references"
+        },
+        {
+          "source_doc": "api_program_record",
+          "target_doc": "webhook_subscription",
+          "relation": "references"
+        },
+        {
+          "source_doc": "api_program_record",
+          "target_doc": "api_access_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "api_program_record",
+          "target_doc": "developer_documentation_release",
+          "relation": "references"
+        },
+        {
+          "source_doc": "api_program_record",
+          "target_doc": "api_access_case",
+          "relation": "create_record",
+          "action_id": "activate"
+        },
+        {
+          "source_doc": "partner_api_key",
+          "target_doc": "api_program_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "partner_api_key",
+          "target_doc": "api_access_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "partner_api_key",
+          "target_doc": "sandbox_account",
+          "relation": "references"
+        },
+        {
+          "source_doc": "partner_api_key",
+          "target_doc": "api_access_case",
+          "relation": "create_record",
+          "action_id": "issue"
+        },
+        {
+          "source_doc": "partner_api_key",
+          "target_doc": "api_access_case",
+          "relation": "create_record",
+          "action_id": "activate"
+        },
+        {
+          "source_doc": "webhook_subscription",
+          "target_doc": "api_program_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "webhook_subscription",
+          "target_doc": "partner_api_key",
+          "relation": "references"
+        },
+        {
+          "source_doc": "webhook_subscription",
+          "target_doc": "processor_event_log",
+          "relation": "references"
+        },
+        {
+          "source_doc": "webhook_subscription",
+          "target_doc": "api_program_record",
+          "relation": "create_record",
+          "action_id": "activate"
+        },
+        {
+          "source_doc": "developer_support_case",
+          "target_doc": "sandbox_account",
+          "relation": "references"
+        },
+        {
+          "source_doc": "developer_support_case",
+          "target_doc": "api_access_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "developer_support_case",
+          "target_doc": "developer_test_run",
+          "relation": "references"
+        },
+        {
+          "source_doc": "developer_support_case",
+          "target_doc": "api_access_case",
+          "relation": "create_record",
+          "action_id": "resolve"
+        },
+        {
+          "source_doc": "developer_support_case",
+          "target_doc": "api_access_case",
+          "relation": "create_record",
+          "action_id": "close"
+        },
+        {
+          "source_doc": "developer_support_case",
+          "target_doc": "api_access_case",
+          "relation": "create_record",
+          "action_id": "assign"
+        },
+        {
+          "source_doc": "developer_test_run",
+          "target_doc": "sandbox_account",
+          "relation": "references"
+        },
+        {
+          "source_doc": "developer_test_run",
+          "target_doc": "sandbox_usage_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "developer_test_run",
+          "target_doc": "sdk_release",
+          "relation": "references"
+        },
+        {
+          "source_doc": "developer_test_run",
+          "target_doc": "api_program_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "sandbox_account",
+          "target_doc": "sandbox_usage_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "sandbox_account",
+          "target_doc": "developer_test_run",
+          "relation": "references"
+        },
+        {
+          "source_doc": "sandbox_account",
+          "target_doc": "developer_support_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "sandbox_account",
+          "target_doc": "partner_api_key",
+          "relation": "references"
+        },
+        {
+          "source_doc": "sandbox_account",
+          "target_doc": "sandbox_usage_record",
+          "relation": "create_record",
+          "action_id": "activate"
+        },
+        {
+          "source_doc": "sandbox_usage_record",
+          "target_doc": "sandbox_account",
+          "relation": "references"
+        },
+        {
+          "source_doc": "sandbox_usage_record",
+          "target_doc": "developer_test_run",
+          "relation": "references"
+        },
+        {
+          "source_doc": "developer_documentation_release",
+          "target_doc": "sdk_release",
+          "relation": "references"
+        },
+        {
+          "source_doc": "developer_documentation_release",
+          "target_doc": "sdk_package",
+          "relation": "references"
+        },
+        {
+          "source_doc": "developer_documentation_release",
+          "target_doc": "api_program_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "sdk_package",
+          "target_doc": "sdk_release",
+          "relation": "references"
+        },
+        {
+          "source_doc": "sdk_package",
+          "target_doc": "developer_documentation_release",
+          "relation": "references"
+        },
+        {
+          "source_doc": "sdk_release",
+          "target_doc": "sdk_package",
+          "relation": "references"
+        },
+        {
+          "source_doc": "sdk_release",
+          "target_doc": "developer_documentation_release",
+          "relation": "references"
+        }
+      ]
+    }
   }
 }

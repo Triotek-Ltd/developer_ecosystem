@@ -4,5 +4,501 @@
   "app_id": "developer_ecosystem",
   "type": "module",
   "status": "draft",
-  "supports_submodules": true
+  "supports_submodules": true,
+  "ui": {
+    "icon_key": "apps",
+    "accent": "#246f89",
+    "logo_image": null,
+    "cover_image": null
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "module",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "docs",
+      "flatten_submodules_in_ui": true
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Sdk Distribution KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "sdk_distribution",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Sdk Distribution summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "sdk_distribution",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Sdk Distribution charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "sdk_distribution",
+          "metric_family": "trend"
+        },
+        "chart_specs": [
+          {
+            "id": "sdk_distribution_trend_line",
+            "label": "Sdk Distribution trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "sdk_distribution_volume_column",
+            "label": "Sdk Distribution volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "sdk_distribution_distribution_donut",
+            "label": "Sdk Distribution distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "developer_documentation_release_trend_line",
+            "label": "Developer Documentation Release trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "developer_documentation_release_volume_column",
+            "label": "Developer Documentation Release volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "developer_documentation_release_distribution_donut",
+            "label": "Developer Documentation Release distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "sdk_package_trend_line",
+            "label": "Sdk Package trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "sdk_package_volume_column",
+            "label": "Sdk Package volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "sdk_package_distribution_donut",
+            "label": "Sdk Package distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "sdk_release_trend_line",
+            "label": "Sdk Release trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "sdk_release_volume_column",
+            "label": "Sdk Release volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "sdk_release_distribution_donut",
+            "label": "Sdk Release distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Sdk Distribution reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "sdk_distribution",
+          "metric_family": "reporting"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "sdk_distribution",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "sdk_distribution",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "sdk_distribution",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "sdk_distribution",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Sdk Distribution Overview",
+        "report_type": "dashboard_summary",
+        "surface": "module"
+      },
+      {
+        "id": "trend_report",
+        "label": "Sdk Distribution Trends",
+        "report_type": "trend_analysis",
+        "surface": "module"
+      },
+      {
+        "id": "summary_report",
+        "label": "Developer Documentation Release Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Developer Documentation Release Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "sdk_distribution_trend_line",
+        "label": "Sdk Distribution trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "sdk_distribution_volume_column",
+        "label": "Sdk Distribution volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "sdk_distribution_distribution_donut",
+        "label": "Sdk Distribution distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "developer_documentation_release_trend_line",
+        "label": "Developer Documentation Release trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "developer_documentation_release_volume_column",
+        "label": "Developer Documentation Release volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "developer_documentation_release_distribution_donut",
+        "label": "Developer Documentation Release distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "sdk_package_trend_line",
+        "label": "Sdk Package trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "sdk_package_volume_column",
+        "label": "Sdk Package volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "sdk_package_distribution_donut",
+        "label": "Sdk Package distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "sdk_release_trend_line",
+        "label": "Sdk Release trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "sdk_release_volume_column",
+        "label": "Sdk Release volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "sdk_release_distribution_donut",
+        "label": "Sdk Release distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ],
+    "source_docs": [],
+    "source_fields": [],
+    "child_sources": [
+      {
+        "id": "developer_documentation_release",
+        "title": "Developer Documentation Release",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "sdk_package",
+        "title": "Sdk Package",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "sdk_release",
+        "title": "Sdk Release",
+        "surface": null,
+        "source_docs": []
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "sdk_release",
+      "sdk_package",
+      "api_program_record",
+      "developer_documentation_release"
+    ],
+    "upstream_docs": [
+      "sdk_release",
+      "sdk_package",
+      "api_program_record",
+      "developer_documentation_release"
+    ],
+    "downstream_docs": [],
+    "actors": [],
+    "downstream_effects": [],
+    "emits_records": [],
+    "handoff_targets": [
+      "sdk_release",
+      "sdk_package",
+      "api_program_record",
+      "developer_documentation_release"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "developer_documentation_release",
+        "target_doc": "sdk_release",
+        "relation": "references"
+      },
+      {
+        "source_doc": "developer_documentation_release",
+        "target_doc": "sdk_package",
+        "relation": "references"
+      },
+      {
+        "source_doc": "developer_documentation_release",
+        "target_doc": "api_program_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "sdk_package",
+        "target_doc": "sdk_release",
+        "relation": "references"
+      },
+      {
+        "source_doc": "sdk_package",
+        "target_doc": "developer_documentation_release",
+        "relation": "references"
+      },
+      {
+        "source_doc": "sdk_release",
+        "target_doc": "sdk_package",
+        "relation": "references"
+      },
+      {
+        "source_doc": "sdk_release",
+        "target_doc": "developer_documentation_release",
+        "relation": "references"
+      }
+    ],
+    "operating_graph": {
+      "nodes": [
+        {
+          "id": "sdk_release",
+          "kind": "doc"
+        },
+        {
+          "id": "sdk_package",
+          "kind": "doc"
+        },
+        {
+          "id": "api_program_record",
+          "kind": "doc"
+        },
+        {
+          "id": "developer_documentation_release",
+          "kind": "doc"
+        }
+      ],
+      "edges": [
+        {
+          "source_doc": "developer_documentation_release",
+          "target_doc": "sdk_release",
+          "relation": "references"
+        },
+        {
+          "source_doc": "developer_documentation_release",
+          "target_doc": "sdk_package",
+          "relation": "references"
+        },
+        {
+          "source_doc": "developer_documentation_release",
+          "target_doc": "api_program_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "sdk_package",
+          "target_doc": "sdk_release",
+          "relation": "references"
+        },
+        {
+          "source_doc": "sdk_package",
+          "target_doc": "developer_documentation_release",
+          "relation": "references"
+        },
+        {
+          "source_doc": "sdk_release",
+          "target_doc": "sdk_package",
+          "relation": "references"
+        },
+        {
+          "source_doc": "sdk_release",
+          "target_doc": "developer_documentation_release",
+          "relation": "references"
+        }
+      ]
+    }
+  },
+  "contract_version": 1
 }

@@ -6,10 +6,10 @@ from core.services.relation_resolution import RelationResolutionService
 
 
 DOC_ID = "partner_api_key"
-RELATED_DOCS = [{'doc_id': 'api_program_record', 'relation_type': 'related', 'show_in_related_panel': True}, {'doc_id': 'api_access_case', 'relation_type': 'related', 'show_in_related_panel': True}, {'doc_id': 'sandbox_account', 'relation_type': 'related', 'show_in_related_panel': True}]
-FETCH_RULES = []
+RELATED_DOCS = [{'doc_id': 'api_program_record', 'relation_type': 'related', 'show_in_related_panel': True}, {'doc_id': 'api_access_case', 'relation_type': 'related', 'show_in_related_panel': True}, {'doc_id': 'sandbox_account', 'relation_type': 'related', 'show_in_related_panel': True}, {'doc_id': 'party_record', 'relation_type': 'related', 'show_in_related_panel': True}]
+FETCH_RULES = [{'source_field': 'party', 'doc_id': 'party_record', 'mode': 'context'}]
 
-BORROWED_FIELDS = [{'description': 'program scope'}, {'description': 'access policy from api_program_record'}]
+BORROWED_FIELDS = [{'description': 'program scope'}, {'description': 'access policy from api_program_record'}, {'field_id': 'party', 'doc_id': 'party_record', 'description': 'Borrow context from party_record through party.'}]
 
 class RelationService:
     def _bridge(self, context: dict | None = None) -> RelationResolutionService | None:

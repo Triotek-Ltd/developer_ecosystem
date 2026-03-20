@@ -4,5 +4,776 @@
   "app_id": "developer_ecosystem",
   "type": "module",
   "status": "draft",
-  "supports_submodules": true
+  "supports_submodules": true,
+  "ui": {
+    "icon_key": "apps",
+    "accent": "#246f89",
+    "logo_image": null,
+    "cover_image": null
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "module",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "docs",
+      "flatten_submodules_in_ui": true
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Api Programs KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "api_programs",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Api Programs summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "api_programs",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Api Programs charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "api_programs",
+          "metric_family": "trend"
+        },
+        "chart_specs": [
+          {
+            "id": "api_programs_trend_line",
+            "label": "Api Programs trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "api_programs_volume_column",
+            "label": "Api Programs volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "api_programs_distribution_donut",
+            "label": "Api Programs distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "api_access_case_trend_line",
+            "label": "Api Access Case trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "api_access_case_volume_column",
+            "label": "Api Access Case volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "api_access_case_distribution_donut",
+            "label": "Api Access Case distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "api_program_record_trend_line",
+            "label": "Api Program Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "api_program_record_volume_column",
+            "label": "Api Program Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "api_program_record_distribution_donut",
+            "label": "Api Program Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "partner_api_key_trend_line",
+            "label": "Partner Api Key trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "partner_api_key_volume_column",
+            "label": "Partner Api Key volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "partner_api_key_distribution_donut",
+            "label": "Partner Api Key distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "webhook_subscription_trend_line",
+            "label": "Webhook Subscription trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "webhook_subscription_volume_column",
+            "label": "Webhook Subscription volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "webhook_subscription_distribution_donut",
+            "label": "Webhook Subscription distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Api Programs reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "api_programs",
+          "metric_family": "reporting"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "api_programs",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "api_programs",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "api_programs",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "api_programs",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Api Programs Overview",
+        "report_type": "dashboard_summary",
+        "surface": "module"
+      },
+      {
+        "id": "trend_report",
+        "label": "Api Programs Trends",
+        "report_type": "trend_analysis",
+        "surface": "module"
+      },
+      {
+        "id": "summary_report",
+        "label": "Api Access Case Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Api Access Case Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "api_programs_trend_line",
+        "label": "Api Programs trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "api_programs_volume_column",
+        "label": "Api Programs volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "api_programs_distribution_donut",
+        "label": "Api Programs distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "api_access_case_trend_line",
+        "label": "Api Access Case trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "api_access_case_volume_column",
+        "label": "Api Access Case volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "api_access_case_distribution_donut",
+        "label": "Api Access Case distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "api_program_record_trend_line",
+        "label": "Api Program Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "api_program_record_volume_column",
+        "label": "Api Program Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "api_program_record_distribution_donut",
+        "label": "Api Program Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "partner_api_key_trend_line",
+        "label": "Partner Api Key trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "partner_api_key_volume_column",
+        "label": "Partner Api Key volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "partner_api_key_distribution_donut",
+        "label": "Partner Api Key distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "webhook_subscription_trend_line",
+        "label": "Webhook Subscription trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "webhook_subscription_volume_column",
+        "label": "Webhook Subscription volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "webhook_subscription_distribution_donut",
+        "label": "Webhook Subscription distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ],
+    "source_docs": [],
+    "source_fields": [],
+    "child_sources": [
+      {
+        "id": "api_access_case",
+        "title": "Api Access Case",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "api_program_record",
+        "title": "Api Program Record",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "partner_api_key",
+        "title": "Partner Api Key",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "webhook_subscription",
+        "title": "Webhook Subscription",
+        "surface": null,
+        "source_docs": []
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "api_program_record",
+      "partner_api_key",
+      "developer_support_case",
+      "webhook_subscription",
+      "api_access_case",
+      "developer_documentation_release",
+      "sandbox_account",
+      "processor_event_log"
+    ],
+    "upstream_docs": [
+      "api_program_record",
+      "partner_api_key",
+      "developer_support_case",
+      "webhook_subscription",
+      "api_access_case",
+      "developer_documentation_release",
+      "sandbox_account",
+      "processor_event_log"
+    ],
+    "downstream_docs": [
+      "developer_support_case",
+      "api_access_case",
+      "api_program_record"
+    ],
+    "actors": [
+      "case owner",
+      "API owner",
+      "security reviewer",
+      "partner admin",
+      "compliance officer"
+    ],
+    "downstream_effects": [
+      "drives access review, key issuance readiness, and partner integration onboarding"
+    ],
+    "emits_records": [
+      {
+        "action_id": "approve",
+        "target_doc": "developer_support_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "close",
+        "target_doc": "developer_support_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "assign",
+        "target_doc": "developer_support_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "activate",
+        "target_doc": "api_access_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "issue",
+        "target_doc": "api_access_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "activate",
+        "target_doc": "api_program_record",
+        "effect_type": "create_record"
+      }
+    ],
+    "handoff_targets": [
+      "api_program_record",
+      "partner_api_key",
+      "developer_support_case",
+      "webhook_subscription",
+      "api_access_case",
+      "developer_documentation_release",
+      "sandbox_account",
+      "processor_event_log"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "api_access_case",
+        "target_doc": "api_program_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "api_access_case",
+        "target_doc": "partner_api_key",
+        "relation": "references"
+      },
+      {
+        "source_doc": "api_access_case",
+        "target_doc": "developer_support_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "api_access_case",
+        "target_doc": "developer_support_case",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "api_access_case",
+        "target_doc": "developer_support_case",
+        "relation": "create_record",
+        "action_id": "close"
+      },
+      {
+        "source_doc": "api_access_case",
+        "target_doc": "developer_support_case",
+        "relation": "create_record",
+        "action_id": "assign"
+      },
+      {
+        "source_doc": "api_program_record",
+        "target_doc": "partner_api_key",
+        "relation": "references"
+      },
+      {
+        "source_doc": "api_program_record",
+        "target_doc": "webhook_subscription",
+        "relation": "references"
+      },
+      {
+        "source_doc": "api_program_record",
+        "target_doc": "api_access_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "api_program_record",
+        "target_doc": "developer_documentation_release",
+        "relation": "references"
+      },
+      {
+        "source_doc": "api_program_record",
+        "target_doc": "api_access_case",
+        "relation": "create_record",
+        "action_id": "activate"
+      },
+      {
+        "source_doc": "partner_api_key",
+        "target_doc": "api_program_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "partner_api_key",
+        "target_doc": "api_access_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "partner_api_key",
+        "target_doc": "sandbox_account",
+        "relation": "references"
+      },
+      {
+        "source_doc": "partner_api_key",
+        "target_doc": "api_access_case",
+        "relation": "create_record",
+        "action_id": "issue"
+      },
+      {
+        "source_doc": "partner_api_key",
+        "target_doc": "api_access_case",
+        "relation": "create_record",
+        "action_id": "activate"
+      },
+      {
+        "source_doc": "webhook_subscription",
+        "target_doc": "api_program_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "webhook_subscription",
+        "target_doc": "partner_api_key",
+        "relation": "references"
+      },
+      {
+        "source_doc": "webhook_subscription",
+        "target_doc": "processor_event_log",
+        "relation": "references"
+      },
+      {
+        "source_doc": "webhook_subscription",
+        "target_doc": "api_program_record",
+        "relation": "create_record",
+        "action_id": "activate"
+      }
+    ],
+    "operating_graph": {
+      "nodes": [
+        {
+          "id": "api_program_record",
+          "kind": "doc"
+        },
+        {
+          "id": "partner_api_key",
+          "kind": "doc"
+        },
+        {
+          "id": "developer_support_case",
+          "kind": "doc"
+        },
+        {
+          "id": "webhook_subscription",
+          "kind": "doc"
+        },
+        {
+          "id": "api_access_case",
+          "kind": "doc"
+        },
+        {
+          "id": "developer_documentation_release",
+          "kind": "doc"
+        },
+        {
+          "id": "sandbox_account",
+          "kind": "doc"
+        },
+        {
+          "id": "processor_event_log",
+          "kind": "doc"
+        }
+      ],
+      "edges": [
+        {
+          "source_doc": "api_access_case",
+          "target_doc": "api_program_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "api_access_case",
+          "target_doc": "partner_api_key",
+          "relation": "references"
+        },
+        {
+          "source_doc": "api_access_case",
+          "target_doc": "developer_support_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "api_access_case",
+          "target_doc": "developer_support_case",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "api_access_case",
+          "target_doc": "developer_support_case",
+          "relation": "create_record",
+          "action_id": "close"
+        },
+        {
+          "source_doc": "api_access_case",
+          "target_doc": "developer_support_case",
+          "relation": "create_record",
+          "action_id": "assign"
+        },
+        {
+          "source_doc": "api_program_record",
+          "target_doc": "partner_api_key",
+          "relation": "references"
+        },
+        {
+          "source_doc": "api_program_record",
+          "target_doc": "webhook_subscription",
+          "relation": "references"
+        },
+        {
+          "source_doc": "api_program_record",
+          "target_doc": "api_access_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "api_program_record",
+          "target_doc": "developer_documentation_release",
+          "relation": "references"
+        },
+        {
+          "source_doc": "api_program_record",
+          "target_doc": "api_access_case",
+          "relation": "create_record",
+          "action_id": "activate"
+        },
+        {
+          "source_doc": "partner_api_key",
+          "target_doc": "api_program_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "partner_api_key",
+          "target_doc": "api_access_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "partner_api_key",
+          "target_doc": "sandbox_account",
+          "relation": "references"
+        },
+        {
+          "source_doc": "partner_api_key",
+          "target_doc": "api_access_case",
+          "relation": "create_record",
+          "action_id": "issue"
+        },
+        {
+          "source_doc": "partner_api_key",
+          "target_doc": "api_access_case",
+          "relation": "create_record",
+          "action_id": "activate"
+        },
+        {
+          "source_doc": "webhook_subscription",
+          "target_doc": "api_program_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "webhook_subscription",
+          "target_doc": "partner_api_key",
+          "relation": "references"
+        },
+        {
+          "source_doc": "webhook_subscription",
+          "target_doc": "processor_event_log",
+          "relation": "references"
+        },
+        {
+          "source_doc": "webhook_subscription",
+          "target_doc": "api_program_record",
+          "relation": "create_record",
+          "action_id": "activate"
+        }
+      ]
+    }
+  },
+  "contract_version": 1
 }

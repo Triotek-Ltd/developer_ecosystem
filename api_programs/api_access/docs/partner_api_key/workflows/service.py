@@ -2,16 +2,22 @@
 
 from __future__ import annotations
 
+from typing import Any, cast
+
 
 DOC_ID = "partner_api_key"
 ARCHETYPE = "transaction"
 INITIAL_STATE = 'requested'
 STATES = ['requested', 'issued', 'active', 'suspended', 'revoked', 'archived']
 TERMINAL_STATES = ['archived']
-ACTION_RULES = {'create': {'allowed_in_states': ['requested', 'issued', 'active', 'suspended', 'revoked'], 'transitions_to': None}, 'issue': {'allowed_in_states': ['requested', 'issued', 'active', 'suspended', 'revoked'], 'transitions_to': 'issued'}, 'activate': {'allowed_in_states': ['requested'], 'transitions_to': 'active'}, 'rotate': {'allowed_in_states': ['requested', 'issued', 'active', 'suspended', 'revoked'], 'transitions_to': None}, 'suspend': {'allowed_in_states': ['requested', 'issued', 'active', 'suspended', 'revoked'], 'transitions_to': None}, 'revoke': {'allowed_in_states': ['requested', 'issued', 'active', 'suspended', 'revoked'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['requested', 'issued', 'active', 'suspended', 'revoked'], 'transitions_to': 'archived'}}
+ACTION_RULES: dict[str, dict[str, Any]] = {'create': {'allowed_in_states': ['requested', 'issued', 'active', 'suspended', 'revoked'], 'transitions_to': None}, 'issue': {'allowed_in_states': ['requested', 'issued', 'active', 'suspended', 'revoked'], 'transitions_to': 'issued'}, 'activate': {'allowed_in_states': ['requested'], 'transitions_to': 'active'}, 'rotate': {'allowed_in_states': ['requested', 'issued', 'active', 'suspended', 'revoked'], 'transitions_to': None}, 'suspend': {'allowed_in_states': ['requested', 'issued', 'active', 'suspended', 'revoked'], 'transitions_to': None}, 'revoke': {'allowed_in_states': ['requested', 'issued', 'active', 'suspended', 'revoked'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['requested', 'issued', 'active', 'suspended', 'revoked'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
 WORKFLOW_HINTS = {'relation_context': {'related_docs': ['api_program_record', 'api_access_case', 'sandbox_account'], 'borrowed_fields': ['program scope', 'access policy from api_program_record'], 'inferred_roles': ['compliance officer', 'case owner']}, 'actors': ['compliance officer', 'case owner'], 'action_actors': {'create': ['compliance officer'], 'issue': ['case owner'], 'activate': ['case owner'], 'archive': ['case owner']}}
+
+RECORD_CONTRACT = {'doc_kind': 'transaction', 'supports_attachments': True, 'supports_comments': True, 'supports_activity_log': True, 'supports_assignments': True, 'is_submittable': False, 'supports_submission_snapshot': True, 'supports_official_outputs': True, 'supports_evidence_pack': True, 'supports_signoff': False}
+SNAPSHOT_POLICY = {'enabled': True, 'trigger_action': 'submit', 'freeze_fields_after_snapshot': True, 'retain_snapshot_history': True, 'snapshot_label_template': '{reference_no}-{workflow_state}', 'trigger_actions': ['submit']}
+RECORDS_MANAGEMENT = {'retention_policy_ref': 'administration.office_administration.filing_records_management.retention_disposal.retention_policy', 'legal_hold_enabled': False, 'disposition_action': 'archive', 'immutable_after_submit': True, 'official_copy_on_submit': False, 'chain_of_custody_required': False, 'retention_trigger_field': None, 'legal_hold_field': None, 'disposition_actions': ['archive']}
 
 class WorkflowService:
     def allowed_actions_for_state(self, state: str | None) -> list[str]:
@@ -29,7 +35,7 @@ class WorkflowService:
 
     def next_state_for(self, action_id: str) -> str | None:
         rule = ACTION_RULES.get(action_id, {})
-        return rule.get("transitions_to")
+        return cast(str | None, rule.get("transitions_to"))
 
     def apply_action(self, action_id: str, state: str | None) -> dict:
         if not self.is_action_allowed(action_id, state):
@@ -53,6 +59,9 @@ class WorkflowService:
             "terminal_states": TERMINAL_STATES,
             "business_objective": WORKFLOW_HINTS.get("business_objective"),
             "ordered_steps": WORKFLOW_HINTS.get("ordered_steps", []),
+            "is_submittable": bool(RECORD_CONTRACT.get("is_submittable")),
+            "submission_actions": SNAPSHOT_POLICY.get("trigger_actions", []),
+            "disposition_actions": RECORDS_MANAGEMENT.get("disposition_actions", []),
         }
 
     def workflow_profile(self) -> dict:
